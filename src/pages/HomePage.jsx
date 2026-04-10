@@ -18,8 +18,8 @@ export default function HomePage() {
               Supporting basic needs and educational opportunity through qualified nonprofit partners.
             </h1>
             <p className="hero-text" style={{ maxWidth: '58ch' }}>
-              Charis Legacy Foundation helps mission-aligned nonprofit organizations provide for life-sustaining needs,
-              educational opportunity, and professional experience that strengthens individuals, families, and communities.
+              Charis Legacy Foundation helps mission-aligned nonprofit organizations provide for life-sustaining needs and
+              educational opportunities that strengthens individuals, families, and communities.
             </p>
             <div className="button-row">
               <Link className="button button-primary" to="/what-we-support">
