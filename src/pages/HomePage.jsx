@@ -24,7 +24,6 @@ export default function HomePage() {
         <div className="container">
           <div className="section-heading">
             <div><p className="eyebrow">Our focus</p><h2>Practical care. Lasting opportunity.</h2></div>
-            <p>We work through nonprofit partners who understand the needs of the people they serve.</p>
           </div>
           <div className="cards-grid two-up">
             <article className="info-card"><p className="eyebrow">01 / Essential needs</p><h3>Helping sustain and strengthen lives</h3><p>Food, safety, care, and relief for individuals and families facing hardship.</p></article>
