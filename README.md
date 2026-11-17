@@ -55,3 +55,17 @@ Hosted address: `https://charisfoundation.netlify.app`.
 Push approved source changes to `main` to trigger Netlify’s production build. Netlify builds `dist` from source; generated `dist` files are not tracked. Keep Netlify form detection enabled (`processing_settings.ignore_html_forms = false`). Configure recipients in Netlify, not in public code. Domain/DNS and HTTPS status are separate from a successful deploy.
 
 Official references: [Netlify form setup](https://docs.netlify.com/manage/forms/setup/) and [submission notifications](https://docs.netlify.com/manage/forms/notifications/).
+
+
+## Deployment verification — November 17, 2026
+
+- Approved redesign published through GitHub → Netlify from commit `186b14a3ddfff10103f94e8a369f5ba7335df038` (Netlify deploy `6afc6f0e97655631453e789a`).
+- Netlify form detection enabled; `contact` form detected with honeypot protection.
+- Notification recipients configured: `support@falkirkllc.com` and `board@charislegacy.org`. Board recipient confirmation completed.
+- A labeled live deployment test reached Netlify. Akismet initially classified this automated test as spam; it was manually marked verified. The board notification and Reply-To header were checked in the connected mailbox. Receipt at the support inbox was not independently checked.
+- Published pages, built assets, permanent redirects, and 2023/2024 PDF filings returned the expected responses.
+- `charislegacy.org` and `www.charislegacy.org` are registered on the Netlify project, but the DNS cutover is pending WordPress account access. The domain still uses WordPress nameservers and website A records. Titan email MX records remain unchanged.
+
+### Pending WordPress DNS cutover
+
+Keep the WordPress nameservers and all email-related records. Replace the website apex A records (`192.0.78.24` and `192.0.78.25`) with `75.2.60.5` for host `@`. Set `www` CNAME to `charisfoundation.netlify.app`. Confirm the current recommended values in Netlify Domain management before making the change. After propagation, verify both domain variants and provision/check Netlify HTTPS. Do not remove or replace Titan MX, SPF, DKIM, or other email records.
