@@ -1,147 +1,48 @@
 import { Link } from 'react-router-dom';
-import SectionIntro from '../components/SectionIntro';
-import {
-  heroStats,
-  impactStories,
-  partnerExamples,
-  supportAreas,
-} from '../data/siteContent';
 
 export default function HomePage() {
   return (
     <>
       <section className="hero section">
-        <div className="container hero-grid hero-hero-image-right">
+        <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Thoughtful giving. Responsible stewardship. Meaningful local impact.</p>
-            <h1 className="home-hero-title">
-              Supporting basic needs and educational opportunity through qualified nonprofit partners.
-            </h1>
-            <p className="hero-text" style={{ maxWidth: '58ch' }}>
-              Charis Legacy Foundation helps mission-aligned nonprofit organizations provide for life-sustaining needs and
-              educational opportunities that strengthens individuals, families, and communities.
-            </p>
+            <p className="eyebrow">Charis Legacy Foundation · Established 2018</p>
+            <h1>Supporting essential needs. Expanding educational opportunity.</h1>
+            <p className="hero-text">We support qualified nonprofit organizations serving individuals, families, and communities, with an emphasis on trusted local relationships.</p>
             <div className="button-row">
-              <Link className="button button-primary" to="/what-we-support">
-                What We Support
-              </Link>
-              <Link className="button button-secondary" to="/contact">
-                Contact Us
-              </Link>
+              <Link className="button button-primary" to="/what-we-support">What We Support</Link>
+              <Link className="text-link" to="/about">About the Foundation <span aria-hidden="true">→</span></Link>
             </div>
           </div>
+          <div className="hero-image-panel">
+            <img src="/images/home-hero.png" alt="Scenes of charity, food assistance, and community care" className="hero-image" width="1024" height="1536" fetchPriority="high" />
+          </div>
+        </div>
+      </section>
 
-          <div className="hero-image-panel home-hero-image-panel">
-            <img
-              src="/images/home-hero.png"
-              alt="Volunteers preparing community support packages"
-              className="hero-image home-hero-image"
-            />
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div><p className="eyebrow">Our focus</p><h2>Practical care. Lasting opportunity.</h2></div>
+            <p>We work through nonprofit partners who understand the needs of the people they serve.</p>
+          </div>
+          <div className="cards-grid two-up">
+            <article className="info-card"><p className="eyebrow">01 / Essential needs</p><h3>Helping sustain and strengthen lives</h3><p>Food, safety, care, and relief for individuals and families facing hardship.</p></article>
+            <article className="info-card"><p className="eyebrow">02 / Education</p><h3>Opening doors through learning</h3><p>Language learning, scholarships, and educational opportunities for people with limited resources.</p></article>
           </div>
         </div>
       </section>
 
       <section className="section surface">
-        <div className="container cards-grid three-up">
-          {heroStats.map((item) => (
-            <article key={item.title} className="info-card">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
         <div className="container">
-          <SectionIntro
-            eyebrow="What we support"
-            title="Support priorities shaped by human need and practical stewardship"
-            text="Charis Legacy is not a broad-spectrum grantmaker. The foundation prefers mission-aligned opportunities where purpose, need, and expected impact are clear."
-          />
-          <div className="cards-grid four-up">
-            {supportAreas.map((item) => (
-              <article key={item.title} className="info-card">
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
+          <div className="section-heading">
+            <div><p className="eyebrow">Selected organizations we have supported</p><h2>Service through partnership.</h2></div>
+            <Link className="text-link" to="/what-we-support#partners">Explore our partners <span aria-hidden="true">→</span></Link>
           </div>
-        </div>
-      </section>
-
-      <section className="section accent-surface">
-        <div className="container">
-          <SectionIntro
-            eyebrow="A simple qualification guide"
-            title="Is Charis Legacy a partnership fit?"
-            text="For the full criteria and priorities, visit What We Support."
-          />
-          <Link className="button button-primary" to="/what-we-support">
-            View What We Support
-          </Link>
-        </div>
-      </section>
-
-      <section className="section surface">
-        <div className="container">
-          <SectionIntro
-            eyebrow="Partners"
-            title="Organizations and initiatives already reflected in the foundation’s work"
-            text="These examples reflect the kinds of nonprofit partnerships Charis Legacy values and the areas where support has been directed."
-          />
-<div className="cards-grid three-up">
-            {partnerExamples.slice(0, 3).map((partner) => (
-              <article key={partner.name} className="info-card">
-                <span className="pill">Partner</span>
-                <h3>{partner.name}</h3>
-                <p>{partner.description}</p>
-              </article>
-            ))}
-          </div>
-          <div style={{ marginTop: '1.5rem' }}>
-            <Link className="button button-secondary" to="/partners">
-              View All Partners
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionIntro
-            eyebrow="Impact"
-            title="Examples of the outcomes Charis Legacy seeks to support"
-            text="The foundation’s work is oriented toward practical care, reduced hardship, educational opportunity, and meaningful benefit in the lives of the people around us."
-          />
-          <div className="cards-grid three-up">
-            {impactStories.map((story) => (
-              <article key={story.title} className="info-card">
-                <h3>{story.title}</h3>
-                <p>{story.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container cta-panel">
-          <div>
-            <p className="eyebrow">Transparency and contacting</p>
-            <h2>Compliance reporting and thoughtful inquiry</h2>
-            <p>
-              This includes the foundations annual reports, financial documents, and a dedicated
-              contact path for aligned nonprofit organizations and community stakeholders.
-            </p>
-          </div>
-          <div className="button-row">
-            <Link className="button button-secondary" to="/transparency">
-              Transparency
-            </Link>
-            <Link className="button button-primary" to="/contact">
-              Contact
-            </Link>
+          <div className="partner-preview">
+            <div><img src="/images/partners/capsa_logo.webp" alt="CAPSA" loading="lazy" /><p>Safety &amp; recovery</p></div>
+            <div><img src="/images/partners/elc_logo.webp" alt="English Language Center" loading="lazy" /><p>Learning &amp; opportunity</p></div>
+            <div><img src="/images/partners/cvfh_logo.avif" alt="Cache Valley for Hope" loading="lazy" /><p>Care through hardship</p></div>
           </div>
         </div>
       </section>

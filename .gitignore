@@ -5,3 +5,4 @@ dist/
 .env
 .env.local
 charis-AI-handoff.md
+.netlify/

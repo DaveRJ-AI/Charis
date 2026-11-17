@@ -6,9 +6,10 @@ import ScrollToTop from '../components/ScrollToTop';
 export default function SiteLayout() {
   return (
     <div className="site-shell">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <ScrollToTop />
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Outlet />
       </main>
       <SiteFooter />

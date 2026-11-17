@@ -17,6 +17,18 @@
     <script type="module" src="/src/main.jsx"></script>
   </head>
   <body>
+    <!-- Netlify detects forms in built HTML before React renders. Keep these
+         field names in sync with ContactPage.jsx. Recipients live in Netlify. -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="subject" type="hidden" value="Charis Legacy Foundation — website inquiry" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <input name="organization" />
+      <select name="inquiry-type"><option>General inquiry</option><option>Donation inquiry</option><option>Existing partnership</option><option>Invited follow-up</option></select>
+      <textarea name="message"></textarea>
+    </form>
     <div id="root"></div>
   </body>
 </html>

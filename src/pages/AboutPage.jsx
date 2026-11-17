@@ -1,74 +1,40 @@
 import PageHero from '../components/PageHero';
-import SectionIntro from '../components/SectionIntro';
-import { boardMembers, boardSummary, siteMeta } from '../data/siteContent';
+import { boardMembers, siteMeta } from '../data/siteContent';
+
+const filings = Object.keys(import.meta.glob('/public/docs/990s/*.pdf', { eager: true, query: '?url', import: 'default' }))
+  .map((path) => ({ url: path.replace('/public', ''), year: path.match(/(20\d{2})/)?.[1] }))
+  .sort((a, b) => Number(b.year) - Number(a.year));
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="About"
-        title="A foundation shaped by grace, stewardship, and meaningful service"
-        text="Founded in 2018, Charis Legacy Foundation was created to support qualified nonprofit partners with a proven record of providing aid, care, support, and educational opportunity to those in need."
-        imageSrc="/images/about-hero.png"
-        imageAlt="People in a community conversation"
-      />
+      <PageHero eyebrow="About Charis Legacy" title="A legacy of grace and service." text="Founded in 2018, Charis Legacy Foundation brings a relationship-centered approach to supporting nonprofit organizations and the communities they serve." imageSrc="/images/about-hero.png" imageAlt="A volunteer serving a warm meal to a child" />
 
-      <section className="section">
-        <div className="container two-column content-columns">
-          <div>
-            <SectionIntro
-              eyebrow="Foundation story"
-              title="Rooted in the idea of giving without the expectation of any reciprocal return"
-              text="The name Charis Legacy comes from the Greek word charis, a word associated with grace and giving without expectation of reciprocal return. For the foundation, that idea reflects both a spiritual dimension and a practical commitment to Christ-like charity expressed through thoughtful service."
-            />
-            <p>
-              Charis Legacy was founded with the intent to meet real needs by supporting nonprofit organizations already doing meaningful work. Rather than operating as a broad grantmaking institution, the foundation prefers focused partnerships where purpose, trust, and community benefit are clear.
-            </p>
-            <p>
-              Though Charis Legacy has supported both its own local and international efforts, it believes the greatest difference is often made through strong local charitable and educational organizations that are already helping build and strengthen communities.
-            </p>
-          </div>
-
-          <div className="info-card emphasis">
-            <h3>Our mission</h3>
-            <p>{siteMeta.mission}</p>
-
-            <h3>Our approach</h3>
-            <p>
-              Charis Legacy seeks to be caring, thoughtful, and careful with our resources. The foundation values wise stewardship, meaningful relationships, and opportunities where practical support can strengthen both individuals and the communities around them.
-            </p>
-          </div>
+      <section className="section surface" id="mission">
+        <div className="container two-column">
+          <div><p className="eyebrow">Our mission</p><h2>Care for today.<br />Opportunity for tomorrow.</h2></div>
+          <div className="prose"><p className="lead">{siteMeta.mission}</p><p>Our work emphasizes communities where the board has local knowledge and relationships. We value clear purpose, responsible use of resources, and support that helps organizations remain sustainable.</p></div>
         </div>
       </section>
 
-      <section className="section surface">
-        <div className="container two-column content-columns">
-          <div className="info-card">
-            <h3>Local relationships matter</h3>
-            <p>
-              The foundation generally prefers organizations located near its board members and in communities it knows well. That local familiarity helps strengthen trust, sharpen judgment, and improve the quality of support decisions.
-            </p>
-          </div>
-          <div className="info-card">
-            <h3>Occasional broader reach</h3>
-            <p>
-              In select cases, Charis Legacy may support international efforts when they address urgent basic needs such as food, medicine, or similarly essential humanitarian care.
-            </p>
-          </div>
+      <section className="section" id="history">
+        <div className="container two-column">
+          <div className="supporting-image"><img src="/images/transparency-hero.png" alt="A food bank volunteer handing a bag of groceries to a community member" loading="lazy" width="1024" height="1536" /></div>
+          <div className="prose"><p className="eyebrow">Our history</p><h2>Rooted in giving.</h2><p>The foundation was established in 2018 to support nonprofit partners with a record of providing aid, care, and educational opportunity.</p><p>The name <em>Charis</em> reflects grace and giving without expectation of return. Inspired by Christ-like charity, the foundation seeks to put those values into practice through service and thoughtful stewardship.</p><p>Our emphasis is local. Selected international support has also helped meet urgent needs such as food and medicine.</p></div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container narrow">
-          <SectionIntro eyebrow="Leadership" title={boardSummary.title} text={boardSummary.text} align="center" />
-          <div className="cards-grid two-up" style={{ marginTop: '2rem' }}>
-            {boardMembers.map((member) => (
-              <article key={member.name} className="info-card">
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </article>
-            ))}
-          </div>
+      <section className="section surface" id="board">
+        <div className="container">
+          <div className="section-heading"><div><p className="eyebrow">Our board</p><h2>People entrusted with the mission.</h2></div><p>The board oversees the foundation’s direction, resources, and nonprofit partnerships.</p></div>
+          <div className="board-grid">{boardMembers.map((member) => <article className="board-member" key={member.name}><h3>{member.name}</h3><p>{member.role}</p></article>)}</div>
+        </div>
+      </section>
+
+      <section className="section" id="public-filings">
+        <div className="container filings-grid">
+          <div><p className="eyebrow">Public filings</p><h2>Information you can review.</h2></div>
+          <div><p>Annual IRS filings are available below for partners and others seeking information about the foundation.</p><div className="filings-list">{filings.map((filing) => <a key={filing.url} className="filing-link" href={filing.url} target="_blank" rel="noreferrer"><span>{filing.year ? `${filing.year} IRS Form 990` : 'IRS filing'}</span><span>PDF <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></span></a>)}</div></div>
         </div>
       </section>
     </>

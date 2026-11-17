@@ -1,15 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { siteMeta } from '../data/siteContent';
-
-const navItems = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/what-we-support', label: 'What We Support' },
-  { to: '/impact', label: 'Impact' },
-  { to: '/partners', label: 'Partners' },
-  { to: '/transparency', label: 'Transparency' },
-  { to: '/contact', label: 'Contact' },
-];
+import { siteMeta, navItems } from '../data/siteContent';
 
 export default function SiteHeader() {
   return (
